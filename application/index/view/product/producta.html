@@ -1,0 +1,94 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="productResult" id="product"}
+{if $product.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$product.title}</title>
+{/if}
+<meta name="description" content="{$product.description}" />
+{if $product.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$product.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="CSS"}
+<link rel="stylesheet" href="__PUB__/css/product.css" />
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>Product  Center</h3>
+        </div>
+        <ul>
+            <li><a href="/product.html">ALL Products</a></li>
+            {volist name="mainResult" id="main"}
+            {foreach $array as $key=>$value}
+            {if $key==$main.id}
+            <li><a href="/productl/{$value}.html" title="{$main.name}">{$main.name}</a></li>
+            {/if}
+            {/foreach}
+            {/volist}
+        </ul>
+         {include file="index/right"/}
+    </div>
+	
+	<div class="n_right">
+		<!-- 面包导航 -->
+        <div class="location">          
+           <ul class="breadcrumb">
+                {volist name="tdkResult" id="tdk"}
+                <li><a href="/index.html">{$tdk.name}</a></li>
+                {/volist}
+              <li><a href="/product.html">All Product</a></li>
+              <li class="active">Electric vehicle lithium battery</li>
+            </ul>
+        </div>
+		<div class="n_centent">
+        {volist name="productResult" id="product"}
+           {if $product.img!=null}
+               <div class="productfl">
+                   <img src="{$product.img}" alt="{$product.name}"/>
+               </div>
+           {/if}
+            <div class="productrl">
+                <div>
+                    <h2>{$product.name}</h2>
+                    {$product.content|htmlspecialchars_decode}
+                </div>
+                <div class="productbottom">
+                    <span><a href="/Contact.html">Consultation</a></span>
+                </div>
+            </div>
+                <div class="ProductTable">
+                    <h1>details</h1>
+                    <div>{$product.editorValue|htmlspecialchars_decode}</div>
+                </div>
+            {/volist}
+		</div>
+        <div class="newpage">
+            {if $prev==null}
+            <span><a>Previous page : period</a></span>
+            {else}
+            {volist name="$prev" id="pre"}
+            <span><a href="/producta/{$pname}.html">Previous page : {$pre.name}</a></span>
+            {/volist}
+            {/if}
+            {if $next==null}
+            <span><a>Next page : period</a></span>
+            {else}
+            {volist name="$next" id="nex"}
+            <span><a href="/producta/{$tname}.html">Next page : {$nex.name}</a></span>
+            {/volist}
+            {/if}
+        </div>
+	</div>
+</div>
+<!--内页详情结束-->
+{/block}

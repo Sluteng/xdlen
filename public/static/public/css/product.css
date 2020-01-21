@@ -1,0 +1,50 @@
+/* 
+* @Author: Administrator
+* @Date:   2019-10-24 15:53:52
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-10-26 08:25:37
+*/
+
+.n_centent .productfl{
+		/*width: 372px;*/
+		height: 300px;
+		float: left;
+		margin-right: 20px;
+		border:1px solid #eee;
+		
+		
+}
+.n_centent .productrl{
+	float: left;
+}
+.productbottom{
+	width:143px;
+	height:43px;
+	line-height: 43px;
+	text-align: center;
+	background:#01a2ff;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+.productbottom a{
+	color:#fff;
+	text-decoration: none;
+}
+.ProductTable h1{
+	width:100%;
+	font-size: 24px;
+	font-weight: bold;
+	float: left;
+	border-bottom:2px solid #eee;
+}
+th{
+	font-size:20px;
+	line-height:40px;
+}
+table td{
+	width:300px;
+	height: 100%;
+	line-height: 40px;
+	text-align: center;
+	font-size:16px;
+}

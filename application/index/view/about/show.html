@@ -1,0 +1,75 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="tdkwResult" id="tdkw"}
+{if $tdkw.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$tdkw.title}</title>
+{/if}
+<meta name="description" content="{$tdkw.description}" />
+{if $tdkw.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$tdkw.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="CSS"}<link rel="stylesheet" href="__PUB__/css/tu.css" />{/block}
+{block name="content"}
+
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>ABOUT US</h3>
+        </div>
+        <ul>
+          {volist name="aboutResult" id="about"}
+          <li><a href="/about.html">{$about.title}</a></li>
+          {/volist}
+          {volist name="patentResult" id="patent" length='1'}
+          <li><a href="/honor.html">{$patent.titles}</a></li>
+          {/volist}
+          {volist name="showResult" id="show" length='1'}
+          <li><a href="/show.html">{$show.name}</a></li>
+          {/volist}
+        </ul>
+       {include file="index/right"/}
+    </div>
+	
+	<div class="n_right">
+		<div class="location">			
+           <ul class="breadcrumb">
+               {volist name="tdkResult" id="tdk"}
+               <li><a href="/index.html">{$tdk.name}</a></li>
+               {/volist}
+               {volist name="abouthResult" id="abouth"}
+               <li><a href="/about.html">{$abouth.name}</a></li>
+               {/volist}
+              {volist name="showResult" id="show" length='1'}
+              <li class="active">{$show.name}</li>
+             {/volist}
+
+            </ul>
+
+		</div>
+		<div class="n_centent">
+            <ul class="polaroids">
+                {volist name="showResult" id="show"}
+                {if $key%4==0 || ($key+5)%4==0}
+                <li><a><img src="{$show.img}" height="350" width="450" alt="{$show.titles}"></a></li>
+                {else}
+                <li><a><img src="{$show.img}" height="350" width="300" alt="{$show.titles}"></a></li>
+                {/if}
+                {/volist}
+            </ul>
+            {volist name="showResult" id="show" length='1'}
+            <h1 style="width:100%;float:left;text-align:center;">{$show.titles}</h1>
+             {/volist}
+		</div>
+    </div>
+</div>
+<!--内页详情结束-->
+{/block}

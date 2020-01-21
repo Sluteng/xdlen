@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+<title>{$tdk.title}</title>
+<meta name="description" content="{$tdk.description}" />
+<meta name="keywords" content="{$tdk.keywords}" />
+{/volist}
+{/block}
+<script type="text/javascript" src="__PUB__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUB__/js/jquery.banner.js"></script>
+<link rel="stylesheet" href="__PUB__/css/global.css" />
+{block name="CSS"}{/block}
+{block name="JS"}
+<link rel="stylesheet" href="__PUB__/css/new.css" />
+<link rel="stylesheet" href="__BOOT__/css/bootstrap.css" />
+<script type="text/javascritp" src="__BOOT__/js/bootstrap.js"></script>
+{/block}
+<!-- <link rel="stylesheet" href="contact-form-7/settings.php" /> -->
+<link rel="Bookmark" href="__ROOT__/favicon.ico" >
+<link rel="Shortcut Icon" href="__ROOT__/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="__PUB__/css/OnlieChat.css">
+<script type="text/javascript" href="__PUB__/js/OnlieChat.js"></script>
+<link rel="stylesheet" href="__FONT__/demo.css" />
+<link rel="stylesheet" href="__FONT__/iconfont.css" />
+<script type="text/javascript" src="__FONT__/iconfont.js"></script>
+<link rel="stylesheet" href="__PUB__/css/share.min.css">
+<script src="__PUB__/js/jquery.share.min.js"></script>
+
+<!-- twitter-->
+ 
+<meta name="twitter:image" content="https://koa.com/logo_128x128.png" />
+ 
+<meta name="twitter:creator" content="@veroluiza" />
+ 
+<meta name="twitter:card" content="summary" />
+ 
+<meta name="twitter:url"   content="当前分享的链接--可要可不要" />
+ 
+ 
+ 
+<!-- facebook -->
+ 
+<meta property="og:updated_time" content="2019-01-22T21:34:21+00:00" />
+ 
+<meta property="og:image" content="https://koa.com/logo_128x128.png" />
+ 
+<meta property="og:image:secure_url" content="https://koa.com/logo_128x128.png" />
+ 
+<meta property="og:image:width" content="128" />
+ 
+<meta property="og:image:height" content="128" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M2RS65J');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2RS65J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></NOscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--??????ʼ-->
+<div class="top">
+	<div class="topMain"  id="navi">
+        {volist name="logoResult" id="logo"}  
+        {if $logo.id==1}
+    	<div class="logo"><a href="/index.html"><img src="{$logo.img}" alt="{$logo.titles}" /></a></div>
+        {/if}
+        {/volist}
+        <ul>
+            {volist name="navberResult" id="navber"}
+        	<li><a href="/{$navber.href}.html" class="{if $navber.href==$foo}act{/if}">{$navber.name}</a></li>
+            {/volist}
+        </ul>    
+        <div class="search">
+            <div class="bar">
+                <form action="/search.html" method="post">
+                    <input type="text" name="name" placeholder="Search here">
+                    <button type="submit"></button>
+                </form>
+        <!--         <form class="form-search" id="searchform" name="formsearch" action="/search.html" method="post">
+                    <input type="search" value="" name="name" class="search-input" placeholder="输入关键字" />
+                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--???????-->
+{block name="banner"}
+<!--banner图ʼ-->
+{volist name="headResult" id="head"}
+{if $head.img!=null}
+<div class="banner" style="height:300px;">
+    <img src="{$head.img}" alt="{$head.title}"/></li>
+</div>
+{/if}
+{/volist}
+<script type="text/javascript"> 
+$(function(){
+    $(".banner").swBanner();
+});
+</script>
+<!--banner图-->
+{/block}
+{block name="content"} {/block}
+
+<!--底部开始-->
+<div class="foot">
+    <div class="footMain">
+    <div class="foots">
+        <div class="foot1">
+            <div class="foot1title">
+                CONTACT
+            </div>
+            <ul>
+                {volist name="companyResult" id="company"}
+                    {if $company.tel!=null}
+                    <li>Tel : {$company.tel}</li>
+                    {/if}
+                    {if $company.fax!=null}
+                    <li>Fax : {$company.fax}</li>
+                    {/if}
+                    <li>E-mail : {$company.email}</li>
+                    <li>Skype: {$company.skyoe}</li>
+                    <li>Contact address : {$company.url}</li>
+                {/volist} 
+            </ul>
+            <div class="social-share" data-sites="facebook,twitter,linkedin"></div> 
+        </div>
+        <div class="foot2">
+            <div class="foot1title">
+                Friendly Link
+            </div>
+            <ul>
+                {volist name="linksResult" id="links"}
+                <li><a href="{$links.look_name}">{$links.name}</a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="foot3">
+            <div class="foot1title">
+                GET IN TOUCH
+            </div>
+            <form action="/contact.html"  name="form" id="form" method="POST" >
+                <input class="input" type="text" name="name" id="name" placeholder="Name" style="float:left;">
+                <textarea id="textarea" cols="30" name="content" rows="10" placeholder="Message"></textarea>
+                <input class="input" id="emails" name="email" type="text" placeholder="Email" style="float:left;">
+                <input class="input" id="urls" name="url" type="text" placeholder="Add" style="float:left;">
+                <input name="tel" type="hidden" value="No time">
+                <button id="button"  type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+     <div class="copy">
+        <p><a href="{$Map}" style="color: #fff;" target="_blank">Sitemap</a> | Xin Power Copyright 2008-2019<a href="http://beian.miit.gov.cn/" style="color:#fff;" target="_blank">  ICP 18006048-2  </a> Powered by ChangXing Web <a href="/admin" style="color:#fff;" target="_blank">©</a> 2008-2019&nbsp;<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278154079'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278154079%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></p>
+    </div>
+    </div>
+</div>
+
+<!--底部结束-->
+    <script type="text/javascript">
+      $(function () {
+          $('#button').click(function () {
+              var name=$('#name').val();
+              var tel=$('#tel').val();
+              var textarea=$('#textarea').val();
+              var emails=$('#emails').val();
+              var urls=$('#urls').val();
+              if(name ==  null || name == ''){
+                  alert("Please enter a contact name");
+                  return false;
+              };
+              if(emails ==  null || emails == ''){
+                  alert("Please fill in the contact email");
+                  return false;
+              };
+              if(urls ==  null || urls == ''){
+                  alert("Please fill in the contact address");
+                  return false;
+              };
+              if(textarea ==  null || textarea == ''){
+                  alert("Please fill in the message");
+                  return false;
+              };
+
+          })
+      })
+    </script>
+<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101218289);</script>
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5dba4b22e4c2fa4b6bd9443a/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<div class="onlie" id="onlie">
+    <a class="btqrShow" style="background-image:none;text-align:center;color:#fff;font-size:18px;line-height:66px;text-decoration:none;" href="https://tawk.to/chat/5dba4b22e4c2fa4b6bd9443a/default"></a>
+</div>
+    
+</body>
+</html>
+

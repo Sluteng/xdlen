@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "554412",
+      "name": "Twitter",
+      "font_class": "iconset0359",
+      "unicode": "e702",
+      "unicode_decimal": 59138
+    },
+    {
+      "icon_id": "554413",
+      "name": "Facebook",
+      "font_class": "iconset0360",
+      "unicode": "e703",
+      "unicode_decimal": 59139
+    },
+    {
+      "icon_id": "1239417",
+      "name": "in",
+      "font_class": "in",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "7239959",
+      "name": "youtube",
+      "font_class": "youtube",
+      "unicode": "e765",
+      "unicode_decimal": 59237
+    }
+  ]
+}

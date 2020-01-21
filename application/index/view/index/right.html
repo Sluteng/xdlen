@@ -1,0 +1,30 @@
+        <div class="news">
+            <img src="__PUB__/images/new.jpg" alt="news" />
+			<ul>
+				{volist name="newsHome" id="news" length="5"}
+				{foreach $arrhome as $key=>$value}
+				{if $key==$news.id}
+				<li><a href="/newsa/{$value}.html" title="{$news.name}">{$news.name}</a></li>
+				{/if}
+				{/foreach}
+                {/volist}
+            </ul>
+		</div>
+        <div class="QQline">
+            <a href="skype:echo123?call" οnclick="return skypeCheck();"><a href="skype:live:.cid.d171c2752b58c2c2?chat" target="_blank"><img src="__PUB__/images/QQ.png"></a></a>
+		</div>
+		<script type="text/javascript" src="http://skype.gmw.cn/script/skypeCheck40.js"> </script>
+		<div class="n_contact">
+			<img src="__PUB__/images/n_contact.jpg" />
+			 {volist name="companyResult" id="company"}
+                 {if $company.tel!=null}
+                 <span style="font-size:16px;font-weight: bold;">Tel: </span>{$company.tel}<br/>
+                 {/if}
+                 {if $company.fax!=null}
+                 <span style="font-size:16px;font-weight: bold;">Fax: </span>{$company.fax}<br/>
+                 {/if}
+                 <span style="font-size:16px;font-weight: bold;">E-mail: </span>{$company.email}<br/>
+                 <span style="font-size:16px;font-weight: bold;">Skype: </span>{$company.skyoe}<br/>
+                 <span style="font-size:16px;font-weight: bold;">address: </span>{$company.url}<br/>
+             {/volist}
+		</div>

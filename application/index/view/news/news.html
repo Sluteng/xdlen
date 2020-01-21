@@ -1,0 +1,84 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="newshResult" id="newsh"}
+{if $newsh.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$newsh.title}</title>
+{/if}
+<meta name="description" content="{$newsh.description}" />
+{if $newsh.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$newsh.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="JS"} 
+<link rel="stylesheet" href="__PUB__/css/new.css"/>
+<link rel="stylesheet" type="text/css" href="__BOOT__/css/bootstrap.css">
+<script type="text/javascript" src="__BOOT__/js/bootstrap.js"></script>
+{/block}
+{block name="content"}
+
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+		<div class="n_title">
+			<h3>NEWS CENTER</h3>
+		</div>
+		<ul>
+			{volist name="newsResult" id="news"}
+			{foreach $array as $key=>$value}
+			{if $key==$news.id}
+			<li><a href="/newsn/{$value}.html">{$news.name}</a></li>
+			{/if}
+			{/foreach}
+		    {/volist}
+		</ul>
+     {include file="index/right"/}
+	</div>
+	<div class="n_right">
+		<!-- 面包导航 -->
+		<div class="location">			
+           <ul class="breadcrumb">
+              {volist name="tdkResult" id="tdk"}
+              <li><a href="/index.html">{$tdk.name}</a></li>
+              {/volist}        
+              {volist name="abouthResult" id="abouth"}
+              <li><a href="/news.html">{$abouth.name}</a></li>
+              {/volist}
+              <li class="active">{$first}</li>
+            </ul>
+		</div>
+		<div class="n_centent">
+			　　<div class="subCont">
+						<ul class="news_list2">
+							{volist name="newsaResult" id="newsa"}
+							<li class="news">
+								<p class="title">
+									{foreach $array2 as $key=>$value}
+									{if $key==$newsa.id}
+									<a href="/newsa/{$value}.html">{$newsa.name}</a>
+									{/if}
+									{/foreach}
+								</p>
+								 <p class="titlea">{$newsa.editorValue|htmlspecialchars_decode|strip_tags}</p>
+							</li>
+							{/volist}
+						</ul>
+						{if $page!=null}
+						 <div class="page_list">
+						 	 <a class="page" href="/newsy/{$first}/1.html" title="Home">&lt;</a>
+                              {$page}
+                             <a class="page" href="/newsy/{$first}/{$max}.html" title="Tail">&gt;</a>
+                        </div>
+                        {/if}
+				</div>
+		</div>
+	</div>
+</div>
+<!--内页详情结束-->
+{/block}

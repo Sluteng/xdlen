@@ -1,0 +1,80 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="caseResult" id="case"}
+{if $case.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$case.title}</title>
+{/if}
+<meta name="description" content="{$case.description}" />
+{if $case.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$case.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="CSS"}
+<link rel="stylesheet" href="__PUB__/css/product.css" />
+<link href="__HUI__/1.0.9/iconfont.css" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>Solution Center</h3>
+        </div>
+        <ul>
+            <li><a href="/solution.html">ALL Solution</a></li>
+        </ul>
+      {include file="index/right"/}
+    </div>
+	<div class="n_right">
+		<!-- 面包导航 -->
+        <div class="location"  style="margin-bottom:20px;">          
+           <ul class="breadcrumb">
+              {volist name="tdkResult" id="tdk"}
+              <li><a href="/index.html">{$tdk.name}</a></li>
+              {/volist}
+              <li><a href="/solution.html">All Solution</a></li>
+              <li class="active">48V 50Ah lithium iron phosphate energy storage system</li>
+            </ul>
+        </div>
+		<div class="n_centent">
+             {volist name="caseResult" id="case"}
+            <div class="Solutionl">
+                    <h2>{$case.name}</h2>
+                    <p style="text-align:center;">
+                        <span>source : {$case.source}</span>
+                        <span><i class="Hui-iconfont">&#xe690;</i>&nbsp;&nbsp;{$case.update_time|date="M.d.Y",###}</span>
+                        <span><i class="Hui-iconfont">&#xe725;</i>&nbsp;&nbsp;{$case.num}</span>
+                    </p>         
+                    <div class="text">
+                        <p  class="texta">{$case.editorValue|htmlspecialchars_decode}</p>
+                    </div>
+            </div>
+            {/volist} 
+            <div class="newpage">
+                {if $prev==null}
+                <span><a>Previous page : period</a></span>
+                {else}
+                {volist name="$prev" id="pre"}
+                <span><a href="/solutiona/{$pname}.html">Previous page : {$pre.name}</a></span>
+                {/volist}
+                {/if}
+                {if $next==null}
+                <span><a>Next page : period</a></span>
+                {else}
+                {volist name="$next" id="nex"}
+                <span><a href="/solutiona/{$tname}.html">Next page : {$nex.name}</a></span>
+                {/volist}
+                {/if}
+            </div>          
+		</div>
+	</div>
+</div>
+<!--内页详情结束-->
+{/block}

@@ -1,0 +1,71 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="honortdkResult" id="honortdk"}
+{if $honortdk.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$honortdk.title}</title>
+{/if}
+<meta name="description" content="{$honortdk.description}" />
+{if $honortdk.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$honortdk.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="CSS"}<link rel="stylesheet" href="__PUB__/css/tu.css" />{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>ABOUT US</h3>
+        </div>
+        <ul>
+            {volist name="aboutResult" id="about"}
+            <li><a href="/about.html">{$about.title}</a></li>
+            {/volist}
+            {volist name="patentResult" id="patent" length='1'}
+            <li><a href="/honor.html">{$patent.titles}</a></li>
+            {/volist}
+            {volist name="showResult" id="show" length='1'}
+            <li><a href="/show.html">{$show.name}</a></li>
+            {/volist}
+        </ul>
+ {include file="index/right"/}
+    </div>
+	
+	<div class="n_right">
+		<div class="location">			
+           <ul class="breadcrumb">
+              {volist name="tdkResult" id="tdk"}
+              <li><a href="/index.html">{$tdk.name}</a></li>
+              {/volist}
+              {volist name="abouthResult" id="abouth"}
+              <li><a href="/about.html">{$abouth.name}</a></li>
+              {/volist}
+              {volist name="patentResult" id="patent" length='1'}
+              <li class="active">{$patent.titles}</li>
+             {/volist}
+            </ul>
+
+		</div>
+		<div class="n_centent">
+            <ul class="polaroids">
+                {volist name="patentResult" id="patent"}
+                <li><a><img src="{$patent.img}" height="350" width="250" alt="{$patent.titles}"></a></li>
+                {/volist}
+            </ul>
+		</div>
+    
+        
+    </div>
+        <div class="page_list">
+                {$page}
+        </div>
+</div>
+<!--内页详情结束-->
+{/block}

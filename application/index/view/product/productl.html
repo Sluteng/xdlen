@@ -1,0 +1,88 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="maintdkResult" id="maintdk"}
+{if $maintdk.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$maintdk.title}</title>
+{/if}
+<meta name="description" content="{$maintdk.description}" />
+{if $maintdk.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$maintdk.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>Product  Center</h3>
+        </div>
+        <ul>
+            <li><a href="/product.html">ALL Products</a></li>
+            {volist name="mainResult" id="main"}
+            {foreach $array as $key=>$value}
+            {if $key==$main.id}
+            <li><a href="/productl/{$value}.html" title="{$main.name}">{$main.name}</a></li>
+            {/if}
+            {/foreach}
+            {/volist}
+        </ul>
+          {include file="index/right"/}
+    </div>
+	<div class="n_right">
+		<!-- 面包导航 -->
+        <div class="location">          
+           <ul class="breadcrumb">
+             {volist name="tdkResult" id="tdk"}
+             <li><a href="/index.html">{$tdk.name}</a></li>
+             {/volist}
+              <li class="active">All Product</li>
+            </ul>
+        </div>
+		<div class="n_centent">
+        <ul class="alMain" >  
+        {volist name="productResult" id="product"}   
+          {foreach $array2 as $key=>$value}
+               {if $key==$product.id}
+                <li class="enlarge">
+                    <div>
+                        <a href="/producta/{$value}.html">
+                            <img src="{$product.img}" width="275" height="215"/>
+                        </a>
+                    </div>
+                    <div>
+                        <p title="{$product.titles}">{$product.titles}</p>
+                    </div>
+                    <div>
+                        <p class="xiang">
+                            <a href="/producta/{$value}.html">Detail</a><span><a href="../product/producta_1.html"></a></span> 
+                        </p> 
+                    </div> 
+                    <div>
+                        <p class="messages">
+                            <a href="/Contact.html">Inquire Now</a><span><a href="../Contact/Contact.html"></a></span> 
+                        </p> 
+                    </div> 
+                </li>
+                {/if}
+             {/foreach} 
+            {/volist}
+            </ul>          
+            {if $page!=null}
+             <div class="page_list">
+                 <a class="page" href="/products/1.html" title="Home">&lt;</a>
+                  {$page}
+                 <a class="page" href="/products/{$max}.html" title="Tail">&gt;</a>
+            </div>
+            {/if}
+            
+		</div>
+	</div>
+</div>
+{/block}

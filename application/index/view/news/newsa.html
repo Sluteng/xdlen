@@ -1,0 +1,90 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="newsaResult" id="newsa"}
+{if $newsa.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$newsa.title}</title>
+{/if}
+<meta name="description" content="{$newsa.description}" />
+{if $newsa.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$newsa.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="JS"} 
+<link rel="stylesheet" href="__PUB__/css/new.css"/>
+<link rel="stylesheet" type="text/css" href="__BOOT__/css/bootstrap.css">
+<link href="__HUI__/1.0.9/iconfont.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__BOOT__/js/bootstrap.js"></script>
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+		<div class="n_title">
+			<h3>NEWS CENTER</h3>
+		</div>
+		<ul>
+            {volist name="newsResult" id="news"}
+            {foreach $array as $key=>$value}
+            {if $key==$news.id}
+            <li><a href="/newsn/{$value}">{$news.name}</a></li>
+            {/if}
+            {/foreach}
+            {/volist}
+		</ul>
+    {include file="index/right"/}
+	</div>
+	<div class="n_right">
+		<!-- 面包导航 -->
+		<div class="location">			
+           <ul class="breadcrumb">
+              {volist name="tdkResult" id="tdk"}
+              <li><a href="/index.html">{$tdk.name}</a></li>
+              {/volist} 
+              {volist name="abouthResult" id="abouth"}
+              <li><a href="/news.html">{$abouth.name}</a></li>
+              {/volist}
+              {volist name="newsaResult" id="newsa"}
+              <li class="active">{$newsa.titles}</li>
+              {/volist}
+            </ul>
+		</div>
+		<div class="n_centent">
+                {volist name="newsaResult" id="newsa"}
+			　　<h3>{$newsa.name}</h3>
+        
+                <span style="height:30px;width:800px;margin-bottom:30px;">
+                    <i class="Hui-iconfont" style="padding-left: 10px;padding-right:5px;">&#xe690;</i>{$newsa.update_time|date="M.d.Y",###}
+                    <i class="Hui-iconfont" style="padding-left: 10px;padding-right:5px;">&#xe725;</i>{$newsa.num}
+               </span>
+                <div style="border-top:2px solid #eee;border-bottom:2px solid #eee;padding-top:20px;">
+			    <p class="NewText">{$newsa.editorValue|htmlspecialchars_decode}</p>
+			    </div>
+				<div class="newpage">
+                    {if $prev==null}
+                    <span><a>Previous page : period</a></span>
+                    {else}
+                    {volist name="$prev" id="pre"}
+                    <span><a href="/newsa/{$pname}.html">Previous page : {$pre.name}</a></span>
+                    {/volist}
+                    {/if}
+                    {if $next==null}
+                    <span><a>Next page : period</a></span>
+                    {else}
+                    {volist name="$next" id="nex"}
+                    <span><a href="/newsa/{$tname}.html">Next page : {$nex.name}</a></span>
+                    {/volist}
+                    {/if}
+				</div>
+                {/volist}
+		</div>
+	</div>
+</div>
+<!--内页详情结束-->
+{/block}

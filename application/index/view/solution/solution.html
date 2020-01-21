@@ -1,0 +1,71 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="abouthResult" id="abouth"}
+{if $abouth.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$abouth.title}</title>
+{/if}
+<meta name="description" content="{$abouth.description}" />
+{if $abouth.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$abouth.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>Solution Center</h3>
+        </div>
+        <ul>
+            <li><a href="/solution.html">ALL Solution</a></li>
+
+        </ul>
+      {include file="index/right"/}
+    </div>
+	
+	<div class="n_right">
+		<!-- 面包导航 -->
+        <div class="location">          
+           <ul class="breadcrumb">
+              {volist name="tdkResult" id="tdk"}
+              <li><a href="/index.html">{$tdk.name}</a></li>
+              {/volist}
+              <li class="active">All Solution</li>
+            </ul>
+        </div>
+		<div class="n_centent">
+            <div class="subCont">
+                        <ul class="solution_list2">
+                            {volist name="caseResult" id="case"}
+                            <li>
+                                {foreach $array as $key=>$value}
+                                {if $key==$case.id}
+                                <a href="/solutiona/{$value}.html">
+                                <span>{$case.name}</span>
+                                <span>{$case.update_time|date="M.d.Y",###}</span>
+                                </a>
+                                {/if}
+                                {/foreach}
+                            </li>
+                            {/volist}
+                        </ul>                      
+                </div>
+                {if $page!=null}
+                   <div class="page_list">
+                        <a class="page" href="/solutions/1.html" title="Home">&lt;</a>
+                         {$page}
+                        <a class="page" href="/solutions/{$max}.html" title="Tail">&gt;</a>
+                   </div>
+                {/if}
+		</div>
+	</div>
+</div>
+<!--内页详情结束-->
+{/block}

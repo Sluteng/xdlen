@@ -1,0 +1,11 @@
+<td><input type="checkbox" name="id[]" value="{$vo.id}"></td>
+<td>{$vo.id}</td>
+<td>{$vo.name}</td>
+<td><img src="{$vo.img}" width="150"></td>
+<td>{$vo.titles}</td>
+<td style="padding: 0">
+    <input type="number" name="sort[{$vo.id}]" value="{$vo.sort}" style="width: 60px;"
+        class="input-text text-c order-input" data-id="{$vo.id}"></td>
+<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+<td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
+<td>{$vo.status|get_status}</td>

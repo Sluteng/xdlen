@@ -1,0 +1,153 @@
+{extend name="index/base"/}
+{block name="tdk"} 
+{volist name="tdkResult" id="tdk"}
+{volist name="abouthResult" id="abouth"}
+{if $abouth.title==null}
+<title>{$tdk.title}</title>
+{else}
+<title>{$abouth.title}</title>
+{/if}
+<meta name="description" content="{$abouth.description}" />
+{if $abouth.keywords==null}
+<meta name="keywords" content="{$tdk.keywords}"/>
+{else}
+<meta name="keywords" content="{$abouth.keywords}"/>
+{/if}
+{/volist}
+{/volist}
+{/block}
+{block name="content"}
+<!--内页详情开始-->
+<div class="n_Main">
+	<div class="n_left">
+        <div class="n_title">
+            <h3>Contact Us</h3>
+        </div>
+        <ul>
+            <li><a href="#top">Company Address</a></li>
+            <li><a href="#bottom">Online Message</a></li>
+
+        </ul>
+         {include file="index/right"/}
+    </div>
+	<div class="n_right">
+		 <!-- 面包导航 -->
+        <div class="location">          
+           <ul class="breadcrumb">
+              <li><a href="/index.html">Home</a></li>
+              <li class="active">Messages</li>
+            </ul>
+        </div>
+		<div class="n_centent">
+		 <script type="text/javascript">
+        function cfm_msg(){
+	       if($("#nickname").val()==""){
+		  alert("Please enter a contact name");
+		  $("#nickname").focus();
+		  return false;
+		  }
+	       if($("#email").val()==""){
+		  alert("Please fill in the contact email");
+		  $("#contact").focus();
+		  return false;
+		  }
+	       if($("#content").val()==""){
+		  alert("Please fill in the message");
+		  $("#content").focus();
+		  return false;
+		  }
+	   $("#form").submit();
+	   }
+        </script>
+<!-- Conact us -->
+            <div class="conact" id="top">
+                <h2>Company Address</h2>
+                <div class="conacta">
+                    <ul>
+                        {volist name="companyResult" id="company"}
+                        {if $company.tel!=null}
+                        <li><span>Tel:</span>&nbsp;{$company.tel}</li>
+                        {/if}
+                        {if $company.fax!=null}
+                        <li><span>Fax:</span>&nbsp;{$company.fax}</li>
+                        {/if}
+                        <li><span>E-mail:</span>&nbsp;{$company.email}</li>
+                        <li><span>Skype:</span>&nbsp;{$company.skyoe}</li>
+                        <li><span>Contact address:</span>&nbsp; {$company.url}</li>
+                        {/volist}
+                    </ul>
+                </div>
+                 {volist name="companyResult" id="company" length="1"}
+                <img src="{$company.img}" height="300" width="400" alt="Company Address" />
+                 {/volist}
+            </div>
+            <div id="bottom">
+            <div class="from" >
+                <form name="form" id="form" action="" method="POST" enctype="application/x-www-form-urlencoded">
+                 <h2>Online Message</h2>
+                    <ul>
+                        <input type="hidden" name="receiver" value="2389193245@qq.com">
+                        <li class="table_1">
+                            <div>
+                                <label>Name&nbsp;:&nbsp;</label>
+                                <input type="text" name="name" id="nickname" style="width:262px; height:30px; outline:none"/>
+                            </div>
+                        </li>
+                        <li class="table_1">
+                            <div>
+                                <label>Tel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
+                                <input type="text" name="tel" id="contact" style="width:262px; height:30px;outline:none"/>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Email&nbsp;&nbsp;:&nbsp;</label>  
+                                <input type="text" name="email" id="email" style="width:632px; height:30px;outline:none" />
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Add&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
+                                <input type="text" name="url" id="address" style="width:632px; height:30px;outline:none" />
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label style="vertical-align: top;    line-height:50px;">Message Content:</label>
+                                <textarea name="content" id="content" style=" width:632px; height:180px; background:#eee; border:1px solid #ddd;outline:none" ></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tijiao">
+                                <a href="javascript:void(0);" onClick="cfm_msg();return false;" style="color:#fff;">Submit</a>
+                            </div>
+                            <div style="margin-top:30px; float:left;">
+                                （Please fill in the above information carefully to keep in touch）
+                            </div>
+                        </li>
+                    </ul>
+                </form> 
+
+<!--                 <form class="form form-horizontal" id="form" method="post" action="/mail.html">
+                    <div class="row cl">
+                        <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>收件地址：</label>
+                        <div class="formControls col-xs-6 col-sm-6">
+                            <input type="text" class="input-text" placeholder="你的邮箱地址，请勿填写别人的" name="receiver" datatype="*" nullmsg="请填写收件地址">
+                        </div>
+                        <div class="col-xs-3 col-sm-3"></div>
+                    </div>
+
+                    <div class="row cl">
+                        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary radius">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-default radius ml-20" onClick="layer_close();">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </form> -->
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内页详情结束-->
+{/block}

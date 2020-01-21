@@ -1,0 +1,26 @@
+/* 
+* @Author: Administrator
+* @Date:   2019-10-31 14:16:35
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-10-31 15:21:28
+*/
+/* 
+* @Author: Administrator
+* @Date:   2019-08-07 16:14:22
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-08-07 16:14:37
+*/
+/*返回顶部*/
+/*.top{background: red;float: right;}*/
+/*.backTop{display: none; opacity: 0; position: fixed; bottom: 100px; right: 15px;  z-index: 100000;}*/
+/*.btqrShow{display: block; width: 69px; height: 66px; border-bottom: 1px solid #696969; background: #424242 url(../images/back_top_qrico.png) no-repeat center center; }*/
+
+/*.btBtn{display: block; width: 69px; height: 61px; background: #424242 url(../public/back_top_arrow.png) no-repeat center center; }*/
+.btqrShow{
+	 		 	width: 100px;        
+			  	height: 63px;        
+			  	background:url(../images/online.jpg) no-repeat center center;        
+			  	position: fixed;        
+			  	bottom: 0px;        
+			  	right: 0px; 
+}

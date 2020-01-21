@@ -1,0 +1,210 @@
+{extend name="index/base"/}
+{block name="JS"} 
+<script type="text/javascript" src="__PUB__/js/donghua.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+{/block}
+{block name="banner"}
+<!--banner开始-->
+<div class="banner">
+    <ul class="banList">
+        {volist name="bannerResult" id="banner"}
+        <li class="{if $key==0}active{/if}"><a href="javascript:void(0)"><img src="{$banner.img}" alt="{$banner.title}" /></a></li>
+        {/volist}
+    </ul>
+    <div class="fomW">
+        <div class="jsNav">
+            {volist name="bannerResult" id="banner"}
+            <a href="javascript:;" class="trigger {if $key==0}current{/if}"></a>
+            {/volist}
+        </div>
+    </div>
+</div>
+<script type="text/javascript"> 
+$(function(){
+    $(".banner").swBanner();
+});
+</script>
+<!--banner结束-->
+{/block}
+{block name="content"}
+<!--首页产品开始-->
+<div class="cp">
+    <div class="cpMain">
+        <div class="cptitle"><img src="__PUB__/images/cptitle.jpg" /></div>
+        <div class="cpdes">Hebei Xin Dong Li New Energy Science And Technology Co., Ltd. specializes in the research and development, design, production and sales of lithium battery pack. It is a professional solution and product provider of lithium battery pack system in China.</div>
+        <div class="cplist">
+            <div class="cpleft">
+                {volist name="prodResult" id="prod"}
+                <div class="cpleftdes" title="{$prod.content}">{$prod.content}</div>
+                {/volist}
+                <a href="/product.html">More details>> </a>
+            </div>
+            <div class="cpright">
+                <ul>
+                    {volist name="ProductResult" id="Product"}
+                    {foreach $array as $key=>$value}
+                    {if $key==$Product.id}
+                    <li><a href="producta/{$value}.html"><img src="{$Product.img}" width="200" height="140" alt="{$Product.name}"/><p title="{$Product.name}">{$Product.name}</p></a></li>
+                    {/if}
+                    {/foreach}
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--首页产品结束-->
+<!--首页关于我们开始-->
+<div class="about">
+    <div class="aboutMain">
+        <div class="abouttitle">
+            <div class="aboutli">
+                <ul>
+                    <li><a href="/about.html">Profile</a></li>
+                    <li><a href="/honor.html">Patent</a></li>
+                    <li><a href="/show.html">Exhibition</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="aboutcon">
+            {volist name="AboutusResult" id="Aboutus"}
+            <div class="aboiutcontent">
+                　　{$Aboutus.editorValue|htmlspecialchars_decode}
+            </div>
+            <div class="shipin">
+                <img src="{$Aboutus.img}" height="350" width="450" alt="{$Aboutus.titles}" />                
+            </div>
+        {/volist}
+        </div>
+    </div>
+</div>
+<!--首页关于我们结束-->
+
+<!--首页新闻开始-->
+<div class="new">
+	<div class="newMain">
+    	<div class="newtitle"><img src="__PUB__/images/newtitle.png"/></div>
+        <div class="newcon">
+        	<div class="newleft">
+            	<ul>
+                    {volist name="newResult" id="new"}
+                    {foreach $arrnew as $key=>$value}
+                    {if $key==$new.id}
+                    <li><a href="/newsn/{$value}">{$new.name}</a></li>
+                    {/if}
+                    {/foreach}
+                    {/volist}
+                    <div class="clearfix"></div>
+                </ul>
+                <div class="dianshi">
+                    {volist name="numHome" id="num"}
+                	<div class="topnew">
+                    	<a href="/newsa/{$arrh}.html">
+                			<img src="{$num.img}" width="370" height="216" alt="{$num.name}" />
+                            <div class="toumingbt"></div>
+                            <div class="biaoti">{$num.name}</div>
+                		</a>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+          <div class="newright">
+            	<ul>
+                {volist name="newsHome" id="news" length="4"}
+                {foreach $arrhome as $key=>$value}
+                  {if $key==$news.id}
+                	<li>
+                    	<div class="newrtitle">
+                            <a href="/newsa/{$value}.html">{$news.name}</a>
+                        </div>
+                        <p>{$news.editorValue|htmlspecialchars_decode|strip_tags}</p>
+                    </li>
+                    {/if}
+                {/foreach}
+                {/volist}
+                </ul>
+            </div>
+    </div>
+</div>
+<!--首页新闻结束-->
+
+<!--案例展示开始-->
+<div class="anli">
+	<div class="anliMain">
+    	<div class="anlititle"></div>
+        <ul>
+            {volist name="CasesResult" id="Cases"}
+            {foreach $arrcas as $key=>$value}
+            {if $key==$Cases.id}
+        	<li>
+                <a href="/solutiona/{$value}.html"><img src="{$Cases.img}" width="274" height="180" alt="{$Cases.name}"/></a>
+                <p><a href="/solutiona/{$value}.html">{$Cases.name}</a></p>
+            </li>
+            {/if}
+            {/foreach}
+            {/volist}
+            <div class="clearfix"></div>
+        </ul>
+        <div class="moreanli"><a href="/solution.html">More cases></a></div>
+    </div>
+</div>
+<!--案例展示结束-->
+<!--联系开始-->
+<!-- <script type="text/javascript">
+function cfm_msg(){
+	if($("#nickname").val()=="" || $("#nickname").val()=="Please fill in the contact name"){
+		alert("Please fill in the contact name！");
+		$("#nickname").focus();
+		return false;
+		}
+	if($("#email").val()=="" ||$("#email").val()=="Please fill in the contact email"){
+		alert("Please fill in the contact email");
+		$("#email").focus();
+		return false;
+		}
+	if($("#content").val()==""){
+		alert("Please fill in the message");
+		$("#content").focus();
+		return false;
+		}
+	$("#form").submit();
+	}
+</script>    
+<div class="lx">
+	<div class="lxMain">
+    	<div class="lxtitle"></div>
+        <div class="lxcon">
+        	<div class="lxleft">
+            	<form name="form" id="form" action="/contact.html" method="POST" enctype="application/x-www-form-urlencoded">
+                	<ul>
+                    	<li>
+                        	<div class="namebj">
+                            	<input type="text" name="name" id="nickname" value="Please fill in the contact name" style="width:240px; margin-top:3px; border:none; height:32px; margin-left:35px; outline:none;" onfocus="this.value = this.value == this.defaultValue ? '' : this.value" onblur="this.value = this.value == '' ? this.defaultValue : this.value"/>
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="emailbj">
+                            	<input type="text" name="email" id="email" value="Please fill in the contact email" style="width:240px; margin-top:3px; border:none; height:32px; margin-left:35px; outline:none;" onfocus="this.value = this.value == this.defaultValue ? '' : this.value" onblur="this.value = this.value == '' ? this.defaultValue : this.value"/>
+                            </div>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    <div class="contentbj">
+                    	<textarea name="content" id="content"  title="Please fill in the message"  style=" width:543px; margin-left:35px; height:190px; margin-top:8px; border:none;outline:none;" ></textarea>
+                    </div>
+                    <a href="javascript:void(0);" onClick="cfm_msg();return false;"><input class="tijiao" type="submit"/></a>
+                   <a class="tijiao" >Submit message</a> 
+                </form>
+            </div>
+        -->
+             <!-- <div class="lxright">
+                   
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49669.47427028908!2d115.4424804122715!3d38.916156655970234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29330259da8cf26e!2sScience%20%26%20Technology%20Park%20of%20University!5e0!3m2!1sen!2sus!4v1571907555475!5m2!1sen!2sus" width="575" height="316" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        </div>
+    </div>
+</div> -->
+<!--联系结束-->
+{/block}
